@@ -7,12 +7,52 @@
   <title>Document</title>
 </head>
 <body>
-  <p id="target"></p>
+  <h1>The Game</h1>
+<br/>
+  <h2 id="rock">Rock</h2>
+  <br/>
+  <h2 id="paper">Paper</h2>
+  <br/>
+  <h2 id="scissors">Scissors</h2>
   
-  <script>
-    const p1 = prompt('Player 1! Rock, paper or scissors?').toLowerCase();
-    const p2 = prompt('Playa 2! Rock, paper or scissors?').toLowerCase();
+  <p id="target"></p>
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+  </script>
+    <script>
+    $(document).ready(function(){
+
+      let p1;
+      let p2;
+
+      $('#rock').click(function(){
+        p1 = 'rock';
+        winningConditions();
+      });
+      $('#scissors').click(function(){
+        p1 = 'scissors';
+        winningConditions();
+      });
+      $('#paper').click(function(){
+        p1 = 'paper';
+        winningConditions();
+      });
+      const randomNumber = Math.floor(Math.random() * Math.floor(3));
+      
+      if(randomNumber === 0){
+        p2= 'rock';
+      } else if (randomNumber === 1){
+        p2 = 'scissors';
+      }else{
+        p2 = 'paper';
+      }
+    
+    const winningConditions = function(){
     const target = document.querySelector('#target');
+   
     if(p1 === 'rock' && p2 === 'paper'){
       target.innerHTML = 'P2 wins!'
     } else if (p1 === 'rock' && p2 === 'scissors'){
@@ -30,7 +70,8 @@
     } else {
       target.innerHTML = 'Someone really botched this!'
     }
-    
+  }
+  }) 
   </script>
 </body>
 </html>
